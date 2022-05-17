@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:gorestapp/page/user_service.dart';
+import 'package:gorestapp/services/user_service.dart';
 import 'package:gorestapp/page/user.dart';
 
 class HomePage extends StatefulWidget {
