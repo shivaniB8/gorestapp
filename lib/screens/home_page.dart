@@ -39,10 +39,23 @@ class _HomePageState extends State<HomePage> {
           itemCount: _usersList.length,
           itemBuilder: (BuildContext context, int index) {
             var user = _usersList[index];
+            var gender = user.gender;
+            var email = user.email;
+            var status = user.status;
+            var comb = email! + "\n" + "Gender: " +gender! + "       " + "Status: " +status!;
+            String x = user.name ?? "";
+            x.toString();
+            var nameparts = x.split(" ");
+            String initial1 = nameparts[0][0];
+            String initial2 = nameparts[1][0];
+            String initials = initial1+initial2;
+
             return ListTile(
               title: Text(user.name ?? ""),
-              subtitle: Text(user.email ?? ""),
-              leading: CircleAvatar(child: Text('A')),
+
+              subtitle: Text(comb),
+
+              leading: CircleAvatar(child: Text(initials)),
               trailing: Icon(Icons.favorite_border),
             );
           },
