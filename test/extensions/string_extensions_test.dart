@@ -14,5 +14,6 @@ void main() {
     expect(' Mr prathamesh jadhav'.getInitials(), 'MP');
     expect('prathamesh'.getInitials(), 'P');
     expect(' '.getInitials(), '');
-  });
+  },
+  );
 }

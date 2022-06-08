@@ -2,7 +2,7 @@ extension StringExtensions on String {
   String getInitials() {
     String name = this;
     String trimmedName = name.trim();
-    if (trimmedName == '') {
+    if (trimmedName.isEmpty) {
       return '';
     }
     var nameParts = trimmedName.split(' ');
