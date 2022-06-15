@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gorestapp/extension/string_extensions.dart';
-
+import 'package:gorestapp/screens/add.dart';
 import 'package:gorestapp/services/user_service.dart';
 import 'package:gorestapp/page/user.dart';
 
@@ -60,6 +60,15 @@ class _HomePageState extends State<HomePage> {
             );
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddPage()),
+          );
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
