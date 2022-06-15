@@ -43,18 +43,19 @@ class _HomePageState extends State<HomePage> {
             String? gender = user.gender;
             String? email = user.email;
             String? status = user.status;
-            String? genderAndStatus = (email??'')+
+            String? genderAndStatus = (email ?? '') +
                 "\n" +
                 "Gender: " +
-                (gender??'') +
+                (gender ?? '') +
                 "       " +
                 "Status: " +
-                (status??'');
+                (status ?? '');
 
             return ListTile(
               title: Text(user.name ?? ""),
               subtitle: Text(genderAndStatus as String),
-              leading: CircleAvatar(child: Text(user.name?.getInitials()??'')),
+              leading:
+                  CircleAvatar(child: Text(user.name?.getInitials() ?? '')),
               trailing: Icon(Icons.favorite_border),
             );
           },
