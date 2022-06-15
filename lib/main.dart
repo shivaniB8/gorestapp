@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gorestapp/screens/home_page.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -15,8 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      initialRoute: '/home',
-      routes: {'/home': (context) => const HomePage()},
+      home: HomePage(),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gorestapp/extension/string_extensions.dart';
 
 import 'package:gorestapp/services/user_service.dart';
 import 'package:gorestapp/page/user.dart';
@@ -39,10 +40,22 @@ class _HomePageState extends State<HomePage> {
           itemCount: _usersList.length,
           itemBuilder: (BuildContext context, int index) {
             var user = _usersList[index];
+            String? gender = user.gender;
+            String? email = user.email;
+            String? status = user.status;
+            String? genderAndStatus = (email ?? '') +
+                "\n" +
+                "Gender: " +
+                (gender ?? '') +
+                "       " +
+                "Status: " +
+                (status ?? '');
+
             return ListTile(
               title: Text(user.name ?? ""),
-              subtitle: Text(user.email ?? ""),
-              leading: CircleAvatar(child: Text('A')),
+              subtitle: Text(genderAndStatus as String),
+              leading:
+                  CircleAvatar(child: Text(user.name?.getInitials() ?? '')),
               trailing: Icon(Icons.favorite_border),
             );
           },
