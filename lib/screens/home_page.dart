@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gorestapp/extension/string_extensions.dart';
-import 'package:gorestapp/page/skeleton.dart';
 import 'package:gorestapp/screens/add.dart';
 import 'package:gorestapp/services/user_service.dart';
 import 'package:gorestapp/page/user.dart';
@@ -13,12 +12,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late bool _isLoading;
   List<User> _usersList = [];
 
   @override
   void initState() {
-    _isLoading = true;
     super.initState();
     _getUsers();
   }
@@ -26,7 +23,6 @@ class _HomePageState extends State<HomePage> {
   void _getUsers() async {
     _usersList = await getUsers();
     setState(() {});
-    _isLoading=false;
   }
 
   @override
@@ -36,15 +32,8 @@ class _HomePageState extends State<HomePage> {
         title: Text('Dashboard'),
       ),
       body: Container(
-        child: _isLoading
-            ? ListView.separated(
-          separatorBuilder: (BuildContext context, int index) => Divider(
-            color: Colors.blueGrey[200],
-          ),
-          itemCount: 10,
-          itemBuilder: (context, index) => const NewsCardSkelton(),
-        )
-            : ListView.separated(
+        padding: EdgeInsets.all(20),
+        child: ListView.separated(
           separatorBuilder: (BuildContext context, int index) => Divider(
             color: Colors.blueGrey,
           ),
@@ -66,7 +55,7 @@ class _HomePageState extends State<HomePage> {
               title: Text(user.name ?? ""),
               subtitle: Text(genderAndStatus as String),
               leading:
-                  CircleAvatar(child: Text(user.name?.getInitials() ?? '')),
+              CircleAvatar(child: Text(user.name?.getInitials() ?? '')),
               trailing: Icon(Icons.favorite_border),
             );
           },
@@ -84,50 +73,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
-class NewsCardSkelton extends StatelessWidget {
-  const NewsCardSkelton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Skeleton(height: 60, width: 60),
-        const SizedBox(
-          width: 16,
-        ),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Skeleton(width: 200),
-              const SizedBox(height: 4),
-              const Skeleton(),
-              const SizedBox(height: 8),
-              Row(
-                children: const [
-                  Expanded(
-                    child: Skeleton(),
-                  ),
-                  SizedBox(width: 16),
-                  Expanded(
-                    child: Skeleton(),
-                  ),
-                ],
-              )
-            ],
-          ),
-        )
-      ],
-    );
-  }
-}
-
-
-
-
 
 
